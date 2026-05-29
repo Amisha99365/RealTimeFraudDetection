@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure real-time fraud detection for banking, UPI, and online payments.">
+  <title>RealTimeFraud — Secure Fraud Detection</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">RF</div>
+        <div>
+          <h1>RealTimeFraud</h1>
+          <p>Secure real-time transaction monitoring</p>
+        </div>
+      </div>
+      <div class="trust-badges">
+        <span class="badge secure">🔒 Encrypted</span>
+        <span class="badge secure">✓ Audit Logged</span>
+        <span class="badge">⚡ Real-time Analysis</span>
+        <span class="badge">🛡 Rate Limited</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Check a Transaction</h2>
+        <p class="subtitle">Submit transaction details for instant fraud scoring.</p>
+
+        <form id="txn-form">
+          <div class="form-grid">
+            <div>
+              <label for="user_id">User ID</label>
+              <input id="user_id" name="user_id" required maxlength="64" placeholder="user_101" value="user_101">
+            </div>
+            <div>
+              <label for="amount">Amount</label>
+              <input id="amount" name="amount" type="number" min="1" step="0.01" required placeholder="5000" value="15000">
+            </div>
+            <div>
+              <label for="currency">Currency</label>
+              <select id="currency" name="currency">
+                <option value="INR" selected>INR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+            <div>
+              <label for="channel">Channel</label>
+              <select id="channel" name="channel">
+                <option value="upi">UPI</option>
+                <option value="banking">Banking</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="insurance">Insurance</option>
+                <option value="payment_gateway">Payment Gateway</option>
+              </select>
+            </div>
+            <div>
+              <label for="device_id">Device ID</label>
+              <input id="device_id" name="device_id" placeholder="phone_abc123" value="phone_abc123">
+            </div>
+            <div>
+              <label for="country_code">Country</label>
+              <input id="country_code" name="country_code" maxlength="2" placeholder="IN" value="IN">
+            </div>
+            <div>
+              <label for="merchant_id">Merchant ID</label>
+              <input id="merchant_id" name="merchant_id" placeholder="merchant_42">
+            </div>
+            <div>
+              <label for="ip_address">IP Address</label>
+              <input id="ip_address" name="ip_address" placeholder="192.168.1.10" value="192.168.1.10">
+            </div>
+          </div>
+          <button type="submit" id="submit-btn">Check Transaction</button>
+        </form>
+
+        <div id="error" class="error"></div>
+        <div id="result" class="result"></div>
+      </section>
+
+      <section class="card">
+        <h2>Live Dashboard</h2>
+        <p class="subtitle">All checks are logged for transparency and audit.</p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="value" id="stat-scored">0</div>
+            <div class="label">Total Scored</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="stat-blocked">0</div>
+            <div class="label">Blocked</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="stat-reviewed">0</div>
+            <div class="label">Under Review</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="stat-allowed">0</div>
+            <div class="label">Allowed</div>
+          </div>
+        </div>
+
+        <table class="recent-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Amount</th>
+              <th>Channel</th>
+              <th>Decision</th>
+              <th>Risk</th>
+            </tr>
+          </thead>
+          <tbody id="recent-body">
+            <tr><td colspan="5" style="color:var(--muted);">No transactions yet.</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <footer>
+      Protected by API key authentication, rate limiting, and security headers.
+      <a href="/docs">API Documentation</a>
+    </footer>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
